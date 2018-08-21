@@ -42,7 +42,7 @@ function handle_auto_embed( $matches, $attr, $url ) {
  */
 function render_card_embed( $args ) {
 	return sprintf(
-		'<blockquote class="trello-card"><a href="%s">Trello Card</a></blockquote>%s',
+		'<blockquote class="trello-card"><a href="%1$s">%1$s</a></blockquote>%2$s',
 		esc_url( $args['url'] ),
 		'<script src="https://p.trellocdn.com/embed.min.js"></script>'
 	);
