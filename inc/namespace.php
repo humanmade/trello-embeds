@@ -20,13 +20,6 @@ function bootstrap() {
 }
 
 /**
- * Enqueue the embed styles.
- */
-function enqueue_script() {
-	wp_enqueue_script( 'hm-trello-embed', 'https://p.trellocdn.com/embed.js', [], null, true );
-}
-
-/**
  * Handle the autoembed for Trello URLs.
  *
  * This replaces the URL with our manual shortcode, which ensures that the
@@ -48,11 +41,9 @@ function handle_auto_embed( $matches, $attr, $url ) {
  * @return string HTML to embed into the content
  */
 function render_card_embed( $args ) {
-	// Ensure the script is enqueued.
-	enqueue_script();
-
 	return sprintf(
-		'<blockquote class="trello-card"><a href="%s">Trello Card</a></blockquote>',
-		esc_url( $args['url'] )
+		'<blockquote class="trello-card"><a href="%s">Trello Card</a></blockquote>%s',
+		esc_url( $args['url'] ),
+		'<script src="https://p.trellocdn.com/embed.min.js"></script>'
 	);
 }
